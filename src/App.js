@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react'
+import IngredientList from './components/IngredientList'
+import BurgerPane from './components/BurgerPane'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  state = {
+    ingredients: this.props.ingredients,
+    stack: []
+  }
+  
+  handleClick = (e, id) => {
+    const stackCopy = [...this.state.stack]
+    stackCopy.unshift(this.state.ingredients[id])
+    this.setState({
+      stack: stackCopy
+    })
+  }
+
+  handleClear = (e) => {
+    this.setState({
+      stack: []
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <IngredientList allIngredients={this.state.ingredients} moveIngredients={this.handleClick}/>
+        <BurgerPane burger={this.state.stack} clear={this.handleClear}/>
+      </div>
+    );
+
+  }
 }
 
 export default App;
