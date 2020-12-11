@@ -16,7 +16,7 @@ const ingredients = [
   {name: 'Lettuce', color: 'lawngreen'},
   {name: 'Tomato', color: 'tomato'},
   {name: 'Bacon', color: 'maroon'},
-  {name: 'Onion', color: 'red'}
+  {name: 'Onion', color: 'lightyellow'}
 ]
 
 ReactDOM.render(
